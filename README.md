@@ -5,6 +5,12 @@ caseid
 University students, faculty, and staff.  It interfaces with a few CWRU
 resources that can provide different information depending on your needs.
 
+**WARNING:** This library is, like, rough.  It doesn't really do any input
+checks, and it doesn't really do any post-processing of output.  I'm thinking of
+adding such features, (so that all search results have similar formats).  But
+right now, don't expect that the return values of these functions will act the
+same forever.
+
 
 caseid.directory
 ----------------
