@@ -77,7 +77,7 @@ class DirectorySearch(object):
         return list(self._generate_results(rows))
 
 
-def directory_simple(search_text, search_method='regular'):
+def simple(search_text, search_method='regular'):
     """Run a simple directory search for a string.
 
     :param search_text: The search text
@@ -88,7 +88,7 @@ def directory_simple(search_text, search_method='regular'):
                            search_method=search_method).execute()
 
 
-def directory_advanced(**kwargs):
+def advanced(**kwargs):
     """Run an advanced directory search.
 
     Useful arguments are surname, givenname, category, and search_method.
