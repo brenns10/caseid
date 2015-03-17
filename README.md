@@ -18,6 +18,38 @@ The annoying limitation is that it doesn't provide students' Case IDs.  It just
 gives a real-name alias email.  In order to view Case IDs, you must log in with
 your own Case ID (which I haven't implemented yet and probably never will).
 
+### Functions
+
+* `caseid.directory.simple(search_text, search_method='regular'`: Simple search.
+  Just searches any text.  `search_method` can take the value `'phonetic'`,
+  which performs a phonetic search (offered by the directory service, YMMV).
+* `caseid.directory.advanced(**kwargs)`: Advanced search.  Can take arguments:
+    * `surname`
+    * `givenname`
+    * `department` - not listed for most, really not that useful.
+    * `location` - I have no idea what this is.
+    * `category` - `'STUDENT'`, `'FACULTY'`, `'STAFF'`, or `'EMERITI'`.
+    * `search_method` - regular by default, but can do phonetic as well
+      (theoretically).
+
+All these functions return an iterator of result objects, which have the
+following attributes:
+
+* `category` - as above
+* `name` - full name
+* `phone` - as a string (not likely to exist)
+* `email` - again, it's a full name alias
+* `department` - not likely to exist
+
+### Example
+
+```python
+from caseid import directory
+
+for result in directory.simple('Stephen'):
+    # Send every Stephen at Case an email.  You monster.
+```
+
 
 caseid.ldap
 -----------
