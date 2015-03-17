@@ -54,10 +54,36 @@ for result in directory.simple('Stephen'):
 caseid.ldap
 -----------
 
-I plan to add an LDAP interface.  This would (at least, theoretically) allow you
-to access Case IDs and a lot more interesting information about people.
-Unfortunately, LDAP is a rather arcane sort of interface, and getting it right
-may take a little time.
+This is an interface to the shady underworld of CWRU's LDAP server.  This poorly
+documented horror show probably holds more secrets than ITS would like to think
+are accessible to the public.  But since they're undocumented, they're probably
+safe.  Unfortunately, since they're undocumented, I don't know what attributes
+hold important information for searching.
+
+On the bright side, LDAP shows off everybody's Case ID like nobody's business.
+So if you need a Case ID, or you already know it, LDAP can get you a result much
+better than the directory.
+
+### Functions
+
+* `caseid.ldap.id(caseid)`: Search for a given Case ID.  Returns a dictionary
+  full of goodies that I'm too tired to document right now.  Try it and see.
+* `caseid.ldap.name(name)`: Search for a name.  Allows the `*` wildcard.  Use
+  with caution.  Get ready for an unreasonable amount of results, because I
+  don't think they purge old accounts.
+
+
+### Example
+
+```python
+from caseid import ldap
+
+print(ldap.id('smb196'))
+# Hey, that's me!
+
+print(ldap.id('Stephen *'))
+# Sploosh!  Tons of results.
+```
 
 
 Installation
