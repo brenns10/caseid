@@ -64,6 +64,10 @@ On the bright side, LDAP shows off everybody's Case ID like nobody's business.
 So if you need a Case ID, or you already know it, LDAP can get you a result much
 better than the directory.
 
+The functions below return lists of results.  Each result is a dictionary.  The
+dictionaries contain attributes that exist in LDAP (which don't provide much
+information beyond a name and email address).
+
 ### Functions
 
 * `caseid.ldap.id(caseid)`: Search for a given Case ID.  Returns a dictionary
@@ -81,7 +85,7 @@ from caseid import ldap
 print(ldap.id('smb196'))
 # Hey, that's me!
 
-print(ldap.id('Stephen *'))
+print(ldap.name('Stephen *'))
 # Sploosh!  Tons of results.
 ```
 
