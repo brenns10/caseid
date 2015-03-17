@@ -32,8 +32,8 @@ your own Case ID (which I haven't implemented yet and probably never will).
     * `search_method` - regular by default, but can do phonetic as well
       (theoretically).
 
-All these functions return an iterator of result objects, which have the
-following attributes:
+All these functions return an iterator of dictionaries, which have the following
+attributes:
 
 * `category` - as above
 * `name` - full name
