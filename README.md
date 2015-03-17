@@ -60,19 +60,30 @@ for result in directory.simple('Stephen'):
 caseid.ldap
 -----------
 
-This is an interface to the shady underworld of CWRU's LDAP server.  This poorly
-documented horror show probably holds more secrets than ITS would like to think
-are accessible to the public.  But since they're undocumented, they're probably
-safe.  Unfortunately, since they're undocumented, I don't know what attributes
-hold important information for searching.
-
-On the bright side, LDAP shows off everybody's Case ID like nobody's business.
-So if you need a Case ID, or you already know it, LDAP can get you a result much
-better than the directory.
+This is an interface to the shady underworld of CWRU's LDAP server.  It's not
+really documented in many places.  Anonymous LDAP cannot access much, but it
+does access Case IDs.  So, you can lookup a person by their Case ID, or a Case
+ID from their name.
 
 The functions below return lists of results.  Each result is a dictionary.  The
-dictionaries contain attributes that exist in LDAP (which don't provide much
-information beyond a name and email address).
+dictionaries contain every attribute that exists in LDAP.  The keys are
+attribute names:
+
+* `cn`: common name (full name)
+* `sn`: surname (last name)
+* `givenName`: first name
+* `displayName`: Full name.  This might be different from the others, if the
+  person has indicated they want to go by a nickname or middle name.
+* `uid`: Case ID.
+* `mail`: Email address.
+* `mailAlternateAddress`: A different email address.
+* `mailEquivalentAddress`: A list of other (alias) addresses.
+
+The values of this dictionary are always lists of strings, even if there is only
+one element in the list.
+
+I'll probably clean up the results of this function and the directory functions
+so they return dictionaries with the same key/value layout soon.
 
 ### Functions
 
