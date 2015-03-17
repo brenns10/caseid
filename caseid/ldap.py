@@ -6,7 +6,7 @@ import ldap3
 _ADDRESS = 'ldap.case.edu'
 _PORT = 389
 _BASE = 'ou=People,o=cwru.edu,o=isp'
-_ATTR = ('sn', 'cn', 'uid', 'mail', 'eduPersonScopedAffiliation')
+_ATTR = ldap3.ALL_ATTRIBUTES
 
 
 def _get_server():
